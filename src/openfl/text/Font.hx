@@ -142,7 +142,12 @@ class Font #if lime extends LimeFont #end
 
 		var font = new Font();
 		#if lime
+		#if openfl_assets
+		var bytes = lime.utils.Assets.getBytes(path);
+		if (bytes != null) font.__fromBytes(bytes);
+		#else
 		font.__fromFile(path);
+		#end
 		#end
 
 		#if lime_cffi

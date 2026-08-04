@@ -3198,7 +3198,11 @@ class BitmapData implements IBitmapDrawable
 	@:noCompletion private function __fromFile(path:String):Void
 	{
 		#if lime
+		#if openfl_assets
+		var image = lime.utils.Assets.getImage(path);
+		#else
 		var image = Image.fromFile(path);
+		#end
 		__fromImage(image);
 		#end
 	}

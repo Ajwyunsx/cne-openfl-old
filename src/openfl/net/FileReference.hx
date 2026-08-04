@@ -930,7 +930,11 @@ class FileReference extends EventDispatcher
 		#if sys
 		if (__path != null)
 		{
+			#if openfl_assets
+			data = cast lime.utils.Assets.getBytes(__path);
+			#else
 			data = Bytes.fromFile(__path);
+			#end
 			openFileDialog_onComplete();
 		}
 		#elseif (js && html5)

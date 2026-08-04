@@ -364,7 +364,11 @@ abstract ByteArray(ByteArrayData) from ByteArrayData to ByteArrayData
 	public static function fromFile(path:String):ByteArray
 	{
 		#if lime
+		#if openfl_assets
+		return cast lime.utils.Assets.getBytes(path);
+		#else
 		return LimeBytes.fromFile(path);
+		#end
 		#else
 		return null;
 		#end

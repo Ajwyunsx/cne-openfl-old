@@ -231,7 +231,7 @@ class Assets
 
 	public static function getMusic(id:String, useCache:Bool = true):Sound
 	{
-		#if (lime_vorbis && lime > "7.9.0")
+		#if (lime_vorbis && lime > "7.9.0" && !openfl_assets)
 		var path = getPath(id);
 		// TODO: What if it is a WAV or non-Vorbis file?
 		var vorbisFile = VorbisFile.fromFile(path);
